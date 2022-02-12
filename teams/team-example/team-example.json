@@ -13,6 +13,16 @@
         "name": "teamexample-online-dev-readers",
         "scope": "/subscriptions/a7690e00-7d72-4724-876e-18ba2062dbdd",
         "role": "acdd72a7-3385-48ef-bd42-f606fba81ae7"
+      },
+      {
+        "name": "teamexample-online-test-readers",
+        "scope": "/subscriptions/8919d5e4-e42f-4e81-9055-363d01e5bfd2",
+        "role": "acdd72a7-3385-48ef-bd42-f606fba81ae7"
+      },
+      {
+        "name": "teamexample-online-test-contributors",
+        "scope": "/subscriptions/8919d5e4-e42f-4e81-9055-363d01e5bfd2",
+        "role": "b24988ac-6180-42a0-ab88-20f7382dd24c"
       }
   ]
 }
