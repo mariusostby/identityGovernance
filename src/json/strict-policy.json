@@ -1,0 +1,43 @@
+{
+    "displayName": "strict-policy",
+    "description": "strict default",
+    "canExtend": false,
+    "durationInDays": 365,
+    "expirationDateTime": null,
+    "accessPackageId": "",
+    "accessReviewSettings": null,
+    "questions": [],
+    "requestorSettings": {
+        "scopeType": "AllExistingDirectorySubjects",
+        "acceptRequests": true,
+        "allowedRequestors": []
+    },
+    "requestApprovalSettings": {
+        "isApprovalRequired": true,
+        "isApprovalRequiredForExtension": false,
+        "isRequestorJustificationRequired": true,
+        "approvalMode": "SingleStage",
+        "approvalStages": [
+            {
+                "approvalStageTimeOutInDays": 14,
+                "isApproverJustificationRequired": true,
+                "isEscalationEnabled": false,
+                "escalationTimeInMinutes": 0,
+                "primaryApprovers": [
+                    {
+                        "@odata.type": "#microsoft.graph.singleUser",
+                        "isBackup": true,
+                        "id": "",
+                        "description": ""
+                    },
+                    {
+                        "@odata.type": "#microsoft.graph.requestorManager",
+                        "isBackup": false,
+                        "managerLevel": 1
+                    }
+                ],
+                "escalationApprovers": []
+            }
+        ]
+    }
+}
