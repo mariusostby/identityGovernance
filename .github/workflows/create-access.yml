@@ -1,0 +1,53 @@
+name: Create access packages
+
+concurrency: create-access.yml
+
+# Controls when the action will run.
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "teams/*/*.json"
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  create-access-packages:
+    defaults:
+      run:
+        working-directory: ${{ github.workspace }}
+        shell: pwsh
+    runs-on: ubuntu-latest
+    environment: navutv
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 2
+
+      - name: Login via Az module
+        uses: azure/login@v1
+        with:
+          creds: ${{secrets.AADACCESSPACKAGES}}
+          enable-AzPSSession: true
+          allow-no-subscriptions: true
+
+      - name: Install modules
+        run: |
+          ./src/ps1/install-modules.ps1 -Modules @{
+              "Az.Accounts" = "latest" 
+              "Az.Resources" = "latest"
+            }
+        shell: pwsh
+
+      - name: Create access packages
+        shell: pwsh
+        env:
+          appId: ${{ secrets.APPID }}
+          appSecret: ${{ secrets.APPSECRET }}
+          tenantId: ${{ secrets.TENANTID}}
+        run: ./src/ps1/create-accessgroup-wrapper.ps1
